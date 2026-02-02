@@ -13,7 +13,7 @@ const Header = ({ darkMode, setDarkMode }) => {
 
         <button
           onClick={() => setDarkMode(!darkMode)}
-          className="group relative p-3 rounded-xl bg-gray-100 dark:bg-gray-800 hover:bg-gray-200 dark:hover:bg-gray-700 transition-all border border-gray-200 dark:border-gray-700"
+          className="group relative p-3 rounded-xl bg-gray-100 dark:bg-gray-800 hover:bg-gray-200 dark:hover:bg-gray-700 transition-all border border-gray-200 dark:border-gray-700 cursor-pointer"
         >
           {darkMode ? (
             <svg
