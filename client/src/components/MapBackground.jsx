@@ -5,14 +5,14 @@ const MapBackground = ({ darkMode }) => {
 
   const images = {
     light: [
-      "../../public/assets/light-background-1.webp",
-      "../../public/assets/light-background-2.webp",
-      "../../public/assets/light-background-3.webp",
+      "/assets/light-background-1.webp",
+      "/assets/light-background-2.webp",
+      "/assets/light-background-3.webp",
     ],
     dark: [
-      "../../public/assets/dark-background-1.webp",
-      "../../public/assets/dark-background-2.webp",
-      "../../public/assets/dark-background-3.webp",
+      "/assets/dark-background-1.webp",
+      "/assets/dark-background-2.webp",
+      "/assets/dark-background-3.webp",
     ],
   };
 
@@ -38,7 +38,7 @@ const MapBackground = ({ darkMode }) => {
       ))}
 
       <div
-        className={`absolute inset-0 transition-colors duration-1000 ${
+        className={`backdrop-blur-[2px] absolute inset-0 transition-colors duration-1000 ${
           darkMode ? "bg-black/30" : "bg-white/10"
         }`}
       />
