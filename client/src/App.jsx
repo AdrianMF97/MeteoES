@@ -2,6 +2,7 @@ import { useState, useEffect } from "react";
 import Header from "./components/Header";
 import SearchBar from "./components/SearchBar";
 import MapBackground from "./components/MapBackground";
+import WeatherCard from "./components/WeatherCard";
 
 function App() {
   const [darkMode, setDarkMode] = useState(false);
@@ -23,10 +24,16 @@ function App() {
     try {
       const response = await fetch(`/api/tiempo/${codigo}`);
       const result = await response.json();
-      if (!result.success) throw new Error(result.error);
-      setWeatherData(result.data);
+
+      // Si el JSON es como el que pasaste, result.success será true
+      // y los datos estarán en result.data
+      if (result.success && result.data && result.data.length > 0) {
+        setWeatherData(result.data[0]); // <--- GUARDAMOS SOLO EL PRIMER ELEMENTO
+      } else {
+        throw new Error("No se encontraron datos para ese código");
+      }
     } catch (err) {
-      setError(err.message || "Error al obtener datos");
+      setError(err.message);
     } finally {
       setLoading(false);
     }
@@ -67,12 +74,8 @@ function App() {
                 )}
 
                 {weatherData && (
-                  <div className="animate-in fade-in slide-in-from-bottom-4 duration-700">
-                    <div className="p-8 bg-blue-50 dark:bg-blue-900/20 rounded-3xl border border-blue-100 dark:border-blue-800 text-center">
-                      <p className="text-blue-600 dark:text-blue-300 font-bold text-xl">
-                        Datos cargados para: {weatherData.nombre}
-                      </p>
-                    </div>
+                  <div className="mt-12">
+                    <WeatherCard data={weatherData} />
                   </div>
                 )}
               </div>
