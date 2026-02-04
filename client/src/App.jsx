@@ -24,11 +24,8 @@ function App() {
     try {
       const response = await fetch(`/api/tiempo/${codigo}`);
       const result = await response.json();
-
-      // Si el JSON es como el que pasaste, result.success será true
-      // y los datos estarán en result.data
       if (result.success && result.data && result.data.length > 0) {
-        setWeatherData(result.data[0]); // <--- GUARDAMOS SOLO EL PRIMER ELEMENTO
+        setWeatherData(result.data[0]);
       } else {
         throw new Error("No se encontraron datos para ese código");
       }
