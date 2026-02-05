@@ -1,11 +1,13 @@
 const Header = ({ darkMode, setDarkMode }) => {
   return (
-    <header className="bg-white dark:bg-gray-900 shadow-xl border-b border-gray-200 dark:border-gray-800 transition-colors duration-500">
+    <header className="sticky top-0 z-50 bg-white/80 dark:bg-gray-900/80 backdrop-blur-md border-b border-gray-200 dark:border-gray-800 transition-colors duration-500">
       <div className="container mx-auto px-6 py-4 flex justify-between items-center">
-        <div className="flex items-center gap-3">
-          <div className="bg-blue-600 p-2 rounded-lg shadow-lg shadow-blue-500/30">
-            <span className="text-2xl">🌦️</span>
-          </div>
+        <div className="flex items-center">
+          <img
+            src="/assets/meteoes_logo.png"
+            alt="MeteoES"
+            className="h-14 w-auto object-contain"
+          />
           <h1 className="text-2xl font-black tracking-tighter text-gray-800 dark:text-white">
             METEO<span className="text-blue-600">ES</span>
           </h1>
@@ -13,7 +15,8 @@ const Header = ({ darkMode, setDarkMode }) => {
 
         <button
           onClick={() => setDarkMode(!darkMode)}
-          className="group relative p-3 rounded-xl bg-gray-100 dark:bg-gray-800 hover:bg-gray-200 dark:hover:bg-gray-700 transition-all border border-gray-200 dark:border-gray-700 cursor-pointer"
+          className="p-3 rounded-xl bg-gray-100 dark:bg-gray-800 hover:bg-gray-200 dark:hover:bg-gray-700 transition-all border border-gray-200 dark:border-gray-700 cursor-pointer"
+          aria-label="Cambiar modo"
         >
           {darkMode ? (
             <svg
