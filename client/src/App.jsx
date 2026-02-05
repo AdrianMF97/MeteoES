@@ -27,7 +27,7 @@ function App() {
       if (result.success && result.data && result.data.length > 0) {
         setWeatherData(result.data[0]);
       } else {
-        throw new Error("No se encontraron datos para ese código");
+        throw new Error("Municipio no encontrado");
       }
     } catch (err) {
       setError(err.message);
@@ -40,24 +40,23 @@ function App() {
     <div className="min-h-screen transition-colors duration-500 overflow-x-hidden">
       <MapBackground darkMode={darkMode} />
       <Header darkMode={darkMode} setDarkMode={setDarkMode} />
-
-      <main className="container mx-auto px-4 py-12">
-        <div className="max-w-4xl mx-auto">
-          <div className="bg-white dark:bg-gray-900 shadow-2xl rounded-[2.5rem] border border-gray-200 dark:border-gray-800 overflow-hidden">
-            <div className="bg-gray-50/50 dark:bg-gray-800/50 p-10 text-center border-b border-gray-100 dark:border-gray-800">
-              <h2 className="text-4xl md:text-5xl font-black mb-3 text-gray-800 dark:text-white tracking-tight">
+      <main className="container mx-auto px-4 py-8 md:py-16 relative z-10">
+        <div className="max-w-5xl mx-auto">
+          <div className="bg-gray-50/80 dark:bg-gray-900/80 backdrop-blur-xl rounded-[3rem] border border-white/50 dark:border-gray-800/50 shadow-[0_8px_30px_rgb(0,0,0,0.04)] dark:shadow-[0_8px_30px_rgb(0,0,0,0.2)] overflow-hidden transition-all duration-500">
+            <div className="text-center pt-12 pb-6 px-6">
+              <h2 className="text-3xl md:text-4xl font-black text-gray-800 dark:text-white tracking-tight mb-2">
                 Predicción Meteorológica
               </h2>
-              <p className="text-gray-500 dark:text-gray-400 text-lg">
-                Introduce el código INE del municipio
+              <p className="text-gray-500 dark:text-gray-300 font-medium">
+                Datos oficiales de AEMET
               </p>
             </div>
 
-            <div className="p-10">
+            <div className="px-6 md:px-12 pb-12">
               <SearchBar onSearch={handleSearch} />
 
               {/* Resultados */}
-              <div className="mt-12">
+              <div className="mt-10">
                 {loading && (
                   <div className="flex justify-center py-10">
                     <div className="animate-spin rounded-full h-14 w-14 border-t-4 border-b-4 border-blue-600"></div>
@@ -66,7 +65,7 @@ function App() {
 
                 {error && (
                   <div className="bg-red-50 dark:bg-red-900/20 border border-red-200 dark:border-red-800 p-6 rounded-2xl text-center text-red-600 dark:text-red-400 font-medium">
-                    <span className="text-2xl mr-2">⚠️</span> {error}
+                    {error}
                   </div>
                 )}
 
