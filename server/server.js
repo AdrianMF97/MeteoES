@@ -59,7 +59,6 @@ app.get("/api/tiempo/:codigoMunicipio", async (req, res) => {
 
     const json1 = await response1.json();
 
-    // Respuesta de AEMET
     if (json1.estado !== 200) {
       return res.status(400).json({
         success: false,
@@ -68,14 +67,22 @@ app.get("/api/tiempo/:codigoMunicipio", async (req, res) => {
       });
     }
 
+    // --- SOLUCIÓN AL PROBLEMA DE LAS TILDES ---
     const urlDatos = json1.datos;
     const response2 = await fetch(urlDatos);
 
     if (!response2.ok) {
-      throw new Error(`Error conexión AEMET: ${response2.status}`);
+      throw new Error(`Error conexión datos AEMET: ${response2.status}`);
     }
 
-    const datosFinales = await response2.json();
+    // Obtenemos los datos como ArrayBuffer
+    const buffer = await response2.arrayBuffer();
+
+    // Decodificamos el binario
+    const decoder = new TextDecoder("iso-8859-1");
+    const textData = decoder.decode(buffer);
+
+    const datosFinales = JSON.parse(textData);
 
     res.json({
       success: true,
@@ -90,7 +97,6 @@ app.get("/api/tiempo/:codigoMunicipio", async (req, res) => {
     });
   }
 });
-
 // 404 endpoint
 app.use((req, res) => {
   res.status(404).json({
