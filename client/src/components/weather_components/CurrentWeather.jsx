@@ -1,4 +1,3 @@
-import React from "react";
 import { getHourlyEvolution } from "./weatherUtils";
 
 const CurrentWeather = ({ municipio, provincia, hoy, icono, descripcion }) => {
