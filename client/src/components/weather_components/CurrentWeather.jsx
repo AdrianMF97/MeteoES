@@ -20,7 +20,7 @@ const CurrentWeather = ({ municipio, provincia, hoy, icono, descripcion }) => {
         <h2 className="text-5xl md:text-6xl font-black text-gray-800 dark:text-white tracking-tight leading-none">
           {municipio}
         </h2>
-        <p className="text-lg font-medium text-gray-500 dark:text-gray-400 capitalize">
+        <p className="text-lg font-medium text-gray-500 dark:text-gray-400">
           {provincia} •{" "}
           <span className="text-blue-600 dark:text-blue-400">
             {descripcion}
