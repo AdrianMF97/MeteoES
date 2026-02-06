@@ -103,3 +103,16 @@ export const getDetailedPeriodData = (dia) => {
     humedad: humedad?.maxima || humedad?.value || 0,
   };
 };
+
+// Función para obtener el código INE a partir de un nombre o código
+export const getIneCode = (input, listaMunicipios) => {
+  // Si ya es un código de 5 dígitos, lo devolvemos tal cual
+  if (/^\d{5}$/.test(input)) return input;
+
+  // Si es texto, buscamos el municipio en la lista
+  const municipio = listaMunicipios.find(
+    (m) => m.nombre.toLowerCase() === input.toLowerCase(),
+  );
+
+  return municipio ? municipio.codigo : null;
+};
