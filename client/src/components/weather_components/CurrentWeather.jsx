@@ -1,4 +1,4 @@
-import { getHourlyEvolution } from "./weatherUtils";
+import { getHourlyEvolution } from "../utils/weatherUtils";
 
 const CurrentWeather = ({ municipio, provincia, hoy, icono, descripcion }) => {
   if (!hoy || !hoy.temperatura) return null;

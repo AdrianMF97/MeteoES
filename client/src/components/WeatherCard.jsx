@@ -1,7 +1,7 @@
 import CurrentWeather from "./weather_components/CurrentWeather";
 import WeatherDetails from "./weather_components/WeatherDetails";
 import ForecastRow from "./weather_components/ForecastRow";
-import { getWeatherIcon } from "./weather_components/weatherUtils";
+import { getWeatherIcon } from "./utils/weatherUtils";
 
 const WeatherCard = ({ data }) => {
   if (!data || !data.prediccion) return null;

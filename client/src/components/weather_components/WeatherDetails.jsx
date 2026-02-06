@@ -1,4 +1,4 @@
-import { getDetailedPeriodData } from "./weatherUtils";
+import { getDetailedPeriodData } from "../utils/weatherUtils";
 
 const WeatherDetails = ({ hoy }) => {
   if (!hoy) return null;

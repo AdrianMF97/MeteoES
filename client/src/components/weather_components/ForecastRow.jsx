@@ -1,4 +1,4 @@
-import { getWeatherIcon, formatDayName } from "./weatherUtils";
+import { getWeatherIcon, formatDayName } from "../utils/weatherUtils";
 
 const ForecastRow = ({ dias }) => {
   if (!dias || dias.length === 0) return null;
