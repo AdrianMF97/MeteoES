@@ -26,7 +26,6 @@ const WeatherCard = ({ data }) => {
           descripcion={descripcion}
         />
         <WeatherDetails hoy={hoy} />
-        {console.log(hoy)}
       </div>
 
       {/* Predicción semanal */}
