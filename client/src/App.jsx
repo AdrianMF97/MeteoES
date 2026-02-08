@@ -10,6 +10,8 @@ function App() {
   const [loading, setLoading] = useState(false);
   const [error, setError] = useState(null);
 
+  const API_BASE_URL = import.meta.env.VITE_API_URL || "http://localhost:3000";
+
   useEffect(() => {
     darkMode
       ? document.documentElement.classList.add("dark")
@@ -22,7 +24,7 @@ function App() {
     setWeatherData(null);
 
     try {
-      const response = await fetch(`/api/tiempo/${codigo}`);
+      const response = await fetch(`${API_BASE_URL}/api/tiempo/${codigo}`);
       const result = await response.json();
       if (result.success && result.data && result.data.length > 0) {
         setWeatherData(result.data[0]);

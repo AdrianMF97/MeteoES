@@ -106,9 +106,6 @@ app.use((req, res) => {
 });
 
 // Iniciar servidor
-app.listen(PORT, () => {
+app.listen(PORT, "0.0.0.0", () => {
   console.log(`🚀 Servidor MeteoES corriendo en http://localhost:${PORT}`);
-  console.log(
-    `📡 Endpoint de prueba: http://localhost:${PORT}/api/tiempo/30017`,
-  );
 });
