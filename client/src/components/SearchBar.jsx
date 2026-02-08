@@ -65,13 +65,18 @@ const SearchBar = ({ onSearch }) => {
   };
 
   return (
-    <div className="max-w-md mx-auto mt-8 px-4 relative" ref={containerRef}>
+    <div
+      className={`max-w-md mx-auto mt-8 px-4 relative transition-all duration-300 ${
+        showSuggestions && filteredSuggestions.length > 0 ? "mb-56" : "mb-8"
+      }`}
+      ref={containerRef}
+    >
       <form onSubmit={handleSubmit} className="flex flex-col gap-3">
         <label className="text-gray-500 dark:text-gray-400 font-bold text-[10px] tracking-[0.2em] uppercase ml-1">
           Búsqueda por municipio o código INE
         </label>
 
-        <div className="flex gap-2 p-1.5 bg-white dark:bg-gray-800 rounded-4xl shadow-lg border border-gray-100 dark:border-gray-700 focus-within:ring-2 focus-within:ring-blue-500/20 focus-within:border-blue-500 transition-all duration-300">
+        <div className="flex gap-2 p-1.5 bg-white dark:bg-gray-800 rounded-4xl shadow-lg border border-gray-100 dark:border-gray-700 focus-within:ring-2 focus-within:ring-blue-500/20 focus-within:border-blue-500 transition-all duration-300 relative z-20">
           <input
             type="text"
             placeholder="Ej: Madrid o 28079"
@@ -93,7 +98,7 @@ const SearchBar = ({ onSearch }) => {
         </div>
 
         {showSuggestions && filteredSuggestions.length > 0 && (
-          <ul className="absolute z-50 top-22 left-6 right-6 bg-white dark:bg-gray-800 rounded-2xl shadow-2xl border border-gray-100 dark:border-gray-700 overflow-hidden animate-in fade-in zoom-in-95 duration-200">
+          <ul className="absolute left-6 right-6 top-full mt-2 bg-white dark:bg-gray-800 rounded-2xl shadow-2xl border border-gray-100 dark:border-gray-700 overflow-hidden animate-in fade-in zoom-in-95 duration-200 z-100">
             {filteredSuggestions.map((m) => (
               <li
                 key={m.ine_code}
@@ -101,7 +106,7 @@ const SearchBar = ({ onSearch }) => {
                 className="px-6 py-3 hover:bg-blue-50 dark:hover:bg-blue-900/20 text-gray-700 dark:text-gray-200 cursor-pointer flex justify-between items-center group transition-colors"
               >
                 <span className="font-medium">{m.name}</span>
-                <span className="text-[11px] text-gray-400 group-hover:text-blue-500 ">
+                <span className="text-[11px] text-gray-400 group-hover:text-blue-500 font-mono">
                   {m.ine_code}
                 </span>
               </li>
