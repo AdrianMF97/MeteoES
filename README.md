@@ -1,4 +1,4 @@
-# MeteoES 🌦️ - Predicción Meteorológica Profesional
+# MeteoES 🌦️ - Predicción Meteorológica
 
 MeteoES es una aplicación web diseñada para consultar la climatología de cualquier municipio de España. Utilizando la API oficial de **AEMET**.
 
