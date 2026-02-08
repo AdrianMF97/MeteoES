@@ -7,7 +7,7 @@ MeteoES es una aplicación web diseñada para consultar la climatología de cual
 Puedes probar la aplicación en vivo a través de los siguientes enlaces:
 
 - **Frontend (UI):** [Enlace a Vercel](https://meteo-es.vercel.app/)
-- **Backend (API Proxy):** [Enlace a Render](https://meteoes.onrender.com/)
+- **Backend (API Proxy):** [Enlace a Render](https://meteoes-3eia.onrender.com)
 
 ## ✨ Características
 
