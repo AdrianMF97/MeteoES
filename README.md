@@ -18,7 +18,7 @@ Puedes probar la aplicación en vivo a través de los siguientes enlaces:
 
 - **Frontend:** React 18, Vite, Tailwind CSS v4.
 - **Backend:** Node.js, Express (Servidor Proxy para bypass de CORS).
-- **Despliegue:** Vercel (Frontend) & Rende (Backend).
+- **Despliegue:** Vercel (Frontend) & Render (Backend).
 
 ## 🚀 Instalación y uso local
 
