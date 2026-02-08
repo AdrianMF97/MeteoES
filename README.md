@@ -16,15 +16,16 @@ Puedes probar la aplicación en vivo a través de los siguientes enlaces:
 
 ## 🛠️ Stack Tecnológico
 
-- **Frontend:** React 18, Vite, Tailwind CSS v4.
-- **Backend:** Node.js, Express (Servidor Proxy para bypass de CORS).
-- **Despliegue:** Vercel (Frontend) & Rende (Backend).
+- **Frontend:** React 19, Vite, Tailwind CSS v4.
+- **Backend:** Node.js, Express.
+- **Despliegue:** Vercel (Frontend) & Render (Backend).
 
 ## 🚀 Instalación y uso local
 
 ### Requisitos
 
-- Node.js v18+
+- Node.js v20+
+- NPM v10+
 - Una clave de API de AEMET
 
 ### Pasos
