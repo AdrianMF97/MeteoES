@@ -30,10 +30,10 @@ Puedes probar la aplicación en vivo a través de los siguientes enlaces:
 
 ### Pasos
 
-1. **Clonar el repo:**
+1. **Clonar el repositorio:**
 
 ```bash
-git clone [https://github.com/AdrianMF97/MeteoES.git](https://github.com/AdrianMF97/MeteoES.git)
+git clone https://github.com/AdrianMF97/MeteoES.git
 ```
 
 2. **Backend:**
