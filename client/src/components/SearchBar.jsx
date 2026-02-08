@@ -15,12 +15,14 @@ const SearchBar = ({ onSearch }) => {
   const inputContainerRef = useRef(null);
   const dropdownRef = useRef(null);
 
+  // Normaliza texto removiendo tildes para búsqueda insensible
   const normalize = (str) =>
     str
       .normalize("NFD")
       .replace(/[\u0300-\u036f]/g, "")
       .toLowerCase();
 
+  // Filtra municipios según el query (mínimo 3 caracteres)
   const filteredSuggestions = useMemo(() => {
     const trimmedQuery = query.trim();
 
@@ -35,17 +37,31 @@ const SearchBar = ({ onSearch }) => {
       .slice(0, 5);
   }, [query]);
 
+  // Calcula y actualiza la posición del dropdown en resize/scroll
   useEffect(() => {
-    if (showSuggestions && inputContainerRef.current) {
-      const rect = inputContainerRef.current.getBoundingClientRect();
-      setDropdownPosition({
-        top: rect.bottom + window.scrollY + 8,
-        left: rect.left + window.scrollX + 8,
-        width: rect.width - 16,
-      });
-    }
-  }, [showSuggestions, query]);
+    const updatePosition = () => {
+      if (showSuggestions && inputContainerRef.current) {
+        const rect = inputContainerRef.current.getBoundingClientRect();
+        setDropdownPosition({
+          top: rect.bottom + window.scrollY + 8,
+          left: rect.left + window.scrollX + 8,
+          width: rect.width - 16,
+        });
+      }
+    };
 
+    updatePosition();
+
+    window.addEventListener("resize", updatePosition);
+    window.addEventListener("scroll", updatePosition, true);
+
+    return () => {
+      window.removeEventListener("resize", updatePosition);
+      window.removeEventListener("scroll", updatePosition, true);
+    };
+  }, [showSuggestions]);
+
+  // Cierra el dropdown al hacer click fuera
   useEffect(() => {
     const handleClickOutside = (e) => {
       const isOutsideContainer =
@@ -74,12 +90,14 @@ const SearchBar = ({ onSearch }) => {
 
     if (!value) return;
 
+    // Búsqueda directa por código INE (5 dígitos)
     if (/^\d{5}$/.test(value)) {
       onSearch(value);
       setShowSuggestions(false);
       return;
     }
 
+    // Búsqueda por nombre de municipio
     const foundMunicipality = municipalities.find(
       (m) => normalize(m.name) === normalize(value),
     );
